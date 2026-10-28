@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Never Split the Difference – Cornell Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{--desk:#c9a26b;--paper:#fdf6d8;--line:#b9cde0;--margin:#e08a8a;--ink:#1f2a5a;--red:#b3261e;--hl:#ffe76a;--hole:#b5793a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--desk:#3a2c1c;--paper:#f3ead0;--hole:#2a2016}}
+:root[data-theme="dark"]{--desk:#3a2c1c;--paper:#f3ead0;--hole:#2a2016}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--desk);padding:18px 10px;font-family:'Patrick Hand','Caveat',cursive;color:var(--ink);font-size:18px;padding-top:max(18px,env(safe-area-inset-top,0px));padding-bottom:max(18px,env(safe-area-inset-bottom,0px))}
+.toc{max-width:900px;margin:0 auto 16px;display:flex;gap:8px;flex-wrap:wrap;font-family:Caveat,cursive;font-size:21px}
+.toc:empty{display:none}
+.toc a{background:var(--paper);color:var(--ink);padding:1px 14px;border-radius:14px;text-decoration:none;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.page{max-width:900px;margin:0 auto;background:var(--paper);position:relative;box-shadow:0 6px 24px rgba(0,0,0,.35);border-radius:3px;scroll-margin-top:12px;
+background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 27px,var(--line) 27px,var(--line) 28px);
+display:grid;grid-template-columns:30% 1fr;grid-auto-rows:auto;padding-left:34px}
+.page+.page{margin-top:36px}
+.page.sleeve{display:block;background-image:none;padding:12px 20px 14px 34px}
+.page.sleeve header{border-bottom:none;padding:4px 0 2px}
+.page.sleeve header h1{font-size:28px;padding-right:0}
+.page.sleeve .sleeve-body{padding:0 0 2px;line-height:1.35;font-size:18px}
+.page.sleeve .sleeve-body p{margin:0}
+.page.sleeve .sleeve-body b,
+header b{font-family:Caveat,cursive;font-weight:700;font-size:21px;color:var(--red)}
+.page.sleeve+.page{margin-top:18px}
+.hole{position:absolute;left:10px;width:16px;height:16px;border-radius:50%;background:var(--hole);box-shadow:inset 1px 1px 3px rgba(0,0,0,.5)}
+header{grid-column:1/-1;border-bottom:3px solid var(--red);padding:10px 16px 6px;position:relative;display:block}
+header h1{font-family:Caveat,cursive;font-size:34px;margin:0;line-height:1;padding-right:13rem}
+header > div:first-child > div:first-of-type{padding-right:13rem}
+header .meta{position:absolute;top:10px;right:16px;font-size:16px;text-align:right;line-height:1.2;white-space:nowrap}
+.cue{border-right:3px solid var(--margin);padding:10px 10px 10px 12px;font-family:Caveat,cursive;font-size:21px;line-height:1.15}
+.cue .k{margin-bottom:8px}
+.cue .t{font-weight:700;color:var(--red);display:block}
+.cue small{font-family:'Patrick Hand';font-size:15px;color:#4a5280;display:block;line-height:1.2}
+.notes{padding:10px 16px;line-height:28px}
+.notes h2{font-family:Caveat,cursive;font-size:24px;margin:0;line-height:28px;text-decoration:underline wavy var(--red) 1px;text-underline-offset:4px}
+.notes p,.notes ul{margin:0}
+.notes ul{padding-left:22px;list-style:'– '}
+.blk{margin-bottom:14px}
+.hl{background:linear-gradient(transparent 20%,var(--hl) 20%,var(--hl) 90%,transparent 90%);padding:0 2px}
+.mine{display:block;border-left:3px solid var(--margin);padding-left:8px;margin:2px 0}
+.mine::before{content:"me: ";font-family:Caveat,cursive;font-weight:700;color:var(--red)}
+.src{font-size:14px;color:#4a5280}
+.red{color:var(--red)}
+.app{border:1.5px dashed var(--red);border-radius:6px;padding:2px 8px;line-height:24px;margin-top:4px;display:block;background:rgba(255,255,255,.35)}
+.app b{font-family:Caveat;font-size:20px;color:var(--red)}
+.sum summary{cursor:pointer;font-family:Caveat,cursive;font-size:22px;color:var(--red)}
+.sum p{margin:0}
+.div{height:8px;margin:6px 0 10px;background:repeating-linear-gradient(90deg,var(--ink) 0 14px,transparent 14px 18px);opacity:.35;transform:rotate(-.4deg)}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:Caveat,cursive;fill:var(--ink)}
+.sum{grid-column:1/-1;border-top:3px solid var(--red);padding:0 16px 14px;line-height:28px;font-size:17px}
+.sum b{font-family:Caveat;font-size:22px;color:var(--red)}
+@media (max-width:620px){.page{grid-template-columns:34% 1fr;padding-left:24px;font-size:16px}.cue{font-size:18px}.cue small{font-size:13px}.hole{left:5px}header h1{font-size:26px}}
+@media print{body{background:#fff;padding:0}.toc{display:none}.page{box-shadow:none;break-after:page;margin:0 auto}}
+</style>
+</head>
+<body>
+<nav class="toc" aria-label="Sessions"><!-- dear-reader:toc-start --><a href="#session-1">Session 1 · Oct 19</a><a href="#session-2">Session 2 · Oct 20</a><a href="#session-3">Session 3 · Oct 21</a><a href="#session-4">Session 4 · Oct 26</a><a href="#session-5">Session 5 · Oct 27</a><a href="#session-6">Session 6 · Oct 28</a><!-- dear-reader:toc-end --></nav>
+<!-- dear-reader:pages-start -->
+<!-- dear-reader:page-0 -->
+<section class="page sleeve" id="sleeve" data-label="Book">
+<header><div><h1>Never Split the Difference — Chris Voss</h1></div></header>
+<div class="sleeve-body">
+<p><b>Goal:</b> Pick up the book's communication tactics for work and personal conversations, and be able to explain the psychology behind each one.</p>
+<p><b>Started:</b> Oct 19, 2026</p>
+<p><b>Sessions:</b> 6</p>
+<p><b>Read:</b> 6.6 hours</p>
+<p><b>Next:</b> Chapter 5 — Trigger the Two Words That Immediately Transform Any Negotiation</p>
+</div>
+</section>
+<!-- /dear-reader:page-0 -->
+
+<!-- dear-reader:page-1 -->
+<section class="page" id="session-1" data-label="Session 1 · Oct 19">
+<span class="hole" style="top:16%"></span><span class="hole" style="top:50%"></span><span class="hole" style="top:84%"></span>
+
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 1 “The New Rules”</div></div>
+<div class="meta">Session 1 · 83.1 min · 6498 words<br>Oct 19, 2026</div>
+</header>
+
+<div class="cue"><span class="t">1 · ★ Key idea</span>Harvard ≠ FBI<small>logic &amp; scripts vs emotions at the centre</small></div>
+<div class="notes">
+<div class="blk">
+<h2>1. The scene &amp; the shift</h2>
+<ul>
+<li>Role-play kidnapper (“give us $1M or he dies”). Voss feels a <span class="hl">flash of panic</span> even after two decades — and calms himself.</li>
+<li>His move: no “No”, just a calibrated question: <i>“How am I supposed to do that?”</i> + apology &amp; first name → warmth.</li>
+<li>Harvard mock negotiation: buyer vs seller with price limits. The students had BATNA/ZOPA but <u>no toolbox</u> for emotion.</li>
+<li>The FBI’s answer: <span class="hl">emotions at the centre</span>, not obstacles. Harvard’s was logic and scripts.</li>
+</ul>
+<p>Reminds me of krav maga — but this is for the mind, and I think more powerful.</p>
+<span class="app"><b>→ Simulate:</b> (1) the kidnapper role-play, (2) the Harvard buyer/seller exercise.</span>
+</div>
+<div class="div"></div>
+</div>
+
+<div class="cue"><span class="t">2 · ? Guiding Q</span>Manipulation?<small>what separates a question that wears someone down from one that gets them solving the problem?</small></div>
+<div class="notes">
+<div class="blk">
+<h2>2. Questions that sound like “No”</h2>
+<p>Open questions insinuate “you’re unfair” → they <span class="hl">negotiate with themselves</span>. Answering needs deep emotional strength &amp; tactical psychological insight.</p>
+<p class="red">? Is it manipulation? What separates a question that wears someone down from one that gets them solving the problem? Voss calls it “passive-aggressive”; Ch. 6 admits people find it manipulative.</p>
+</div>
+</div>
+
+<div class="cue"><span class="t">3 · ★ Key idea</span>System 1 → System 2<small>we’re irrational animals</small></div>
+<div class="notes">
+<div class="blk">
+<h2>3. System 1 &amp; System 2</h2>
+<p>Misconception: humans are logical. Reality: <span class="hl">“crazy, irrational, impulsive, emotionally driven animals.”</span> To change S2, go through S1 — S2 still answers, but <i>rationalizes</i> what S1 felt.</p>
+<svg viewBox="0 0 520 110" role="img" aria-label="Framing questions affects System 1, which shapes the System 2 answer">
+<rect x="4" y="22" width="130" height="50" rx="10" fill="#ffd9d9" stroke="#b3261e" stroke-width="2.5"/>
+<text x="69" y="44" font-size="22" text-anchor="middle">Your framing</text><text x="69" y="64" font-size="18" text-anchor="middle">“How am I supposed…?”</text>
+<path d="M136 47 H176" stroke="#1f2a5a" stroke-width="3" fill="none"/><path d="M168 40 L178 47 L168 54" stroke="#1f2a5a" stroke-width="3" fill="none"/>
+<rect x="180" y="22" width="150" height="50" rx="10" fill="#ffe76a" stroke="#1f2a5a" stroke-width="2.5"/>
+<text x="255" y="44" font-size="22" text-anchor="middle">System 1 🐒</text><text x="255" y="64" font-size="18" text-anchor="middle">fast · instinct · emotion</text>
+<path d="M332 47 H372" stroke="#1f2a5a" stroke-width="3" fill="none"/><path d="M364 40 L374 47 L364 54" stroke="#1f2a5a" stroke-width="3" fill="none"/>
+<rect x="376" y="22" width="140" height="50" rx="10" fill="#cfe0ff" stroke="#1f2a5a" stroke-width="2.5"/>
+<text x="446" y="44" font-size="22" text-anchor="middle">System 2 🧠</text><text x="446" y="64" font-size="18" text-anchor="middle">rationalizes → “better offer”</text>
+<text x="260" y="102" font-size="19" text-anchor="middle">Andy: S1 felt “not good enough” → S2 made it make sense</text>
+</svg>
+<p>Without S1 tools, S2 negotiation = making an omelet without knowing how to crack an egg.</p>
+</div>
+<div class="div"></div>
+</div>
+
+<div class="cue"><span class="t">4 · ★ Key idea</span>Tactical Empathy<small>listening as a martial art</small></div>
+<div class="notes">
+<div class="blk">
+<h2>4. Tactical Empathy</h2>
+<p><span class="hl">Listening as a martial art</span> — not passive, “the most active thing you can do.” Centerpiece of the book.</p>
+<svg viewBox="0 0 520 150" role="img" aria-label="Listening at the centre, balancing emotional intelligence and influence, to gain access to the other mind">
+<circle cx="260" cy="72" r="42" fill="#ffe76a" stroke="#1f2a5a" stroke-width="2.5"/>
+<text x="260" y="68" font-size="24" text-anchor="middle">Active</text><text x="260" y="90" font-size="24" text-anchor="middle">listening 👂</text>
+<rect x="20" y="46" width="150" height="52" rx="10" fill="#ffd9d9" stroke="#b3261e" stroke-width="2.5"/>
+<text x="95" y="68" font-size="21" text-anchor="middle">Emotional</text><text x="95" y="88" font-size="21" text-anchor="middle">intelligence</text>
+<rect x="350" y="46" width="150" height="52" rx="10" fill="#cfe0ff" stroke="#1f2a5a" stroke-width="2.5"/>
+<text x="425" y="68" font-size="21" text-anchor="middle">Assertive skills</text><text x="425" y="88" font-size="21" text-anchor="middle">of influence</text>
+<path d="M172 72 H216 M304 72 H348" stroke="#1f2a5a" stroke-width="3" stroke-dasharray="6 4"/>
+<text x="260" y="140" font-size="21" text-anchor="middle">⚖ balance both → access to the other person’s mind</text>
+</svg>
+<p>Listening is the cheapest, most effective concession. It’s the tool; EI and influence are what you balance while using it.</p>
+</div>
+</div>
+
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Negotiation = communication with results</div><div class="k"><span class="t">🔍 Details</span>2 functions: info gathering &amp; behavior influencing</div><div class="k"><span class="t">🔍 Details</span>Psychologically aware</div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. What negotiation is</h2>
+<ul>
+<li><span class="hl">Communication with results</span> — a purpose in the exchange. Not only conflict: any time each side wants something.</li>
+<li>2 functions: <b>information gathering</b> + <b>behavior influencing</b>.</li>
+<li>Conflict is inevitable → engage “without inflicting damage.”</li>
+<li>Psychologically aware: start with <u>my own</u> emotions &amp; instincts, then calm, build rapport, gain trust.</li>
+</ul>
+</div>
+</div>
+
+<footer class="sum">
+<p><b>Next:</b> Chapter 2 — Be a Mirror. <b>Carry over:</b> is calibrated questioning manipulation? The book raises it again in Ch. 6. Keep adding tactics, each with its why.</p>
+<details open><summary>Summary (refined)</summary>
+<p>The first chapter is an introduction to what the book is about. Chris drew differences between his negotiation techniques and what was developed academically: the academic approach assumes people are rational, but he says we are irrational, emotionally driven animals. He also leveraged the 2 systems to make negotiation work, which is by understanding System 1 to influence System 2, through how you frame and deliver your questions and statements. He also put negotiation in a wider context of application, which is not just in high-stakes situations but everyday life, where negotiation is basically communication with results and purpose: you are trying to get something from or with someone. It serves two functions: information gathering and behavior influencing. The FBI's approach put emotions and emotional intelligence at the center. The centerpiece is Tactical Empathy: negotiation relies on active listening, a powerful tool, because people want to be understood and listening is the cheapest, most effective concession. Combined with an understanding of emotions and psychology, it influences the decision of the counterpart.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-1 -->
+
+<!-- dear-reader:page-2 -->
+<section class="page" id="session-2" data-label="Session 2 · Oct 20">
+<span class="hole" style="top:16%"></span><span class="hole" style="top:50%"></span><span class="hole" style="top:84%"></span>
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 2 “Be a Mirror”</div><div><b>Session goal:</b> Explain mirroring and why it works, and name one real conversation where I'll try it.</div></div>
+<div class="meta">Session 2 · 60 min · 2848 words<br>Oct 20, 2026</div>
+</header>
+<div class="cue"><div class="k"><span class="t">1 · ★ Key idea</span>Hypotheses<small>hold several, then test</small></div><div class="k"><span class="t">🔍 Details</span>discovery comes first</div></div>
+<div class="notes">
+<div class="blk">
+<h2>1. Assumptions blind, hypotheses guide</h2>
+<p>Great negotiators reveal the surprises they are certain exist. Hold several hypotheses and use new information to test and winnow them.</p>
+<p>The early goal is a <span class="hl">mindset of discovery</span>: extract and observe as much as you can.</p>
+<p>Interestingly this aligns with the design thinking method: Discovery (list out hypotheses) -&gt; Empathise -&gt; Ideate -&gt; Validate. Here he's describing the first step, and the next step is about Empathise (tactical empathy). This is real alignment with my work as a PM.</p>
+<svg viewBox="0 0 520 78" role="img" aria-label="An assumption becomes a hypothesis, then new information keeps it or drops it">
+<rect x="4" y="16" width="110" height="44" rx="8" fill="#ffd9d9" stroke="#b3261e"/>
+<text x="59" y="43" font-size="20" text-anchor="middle">Assumption</text>
+<path d="M118 38 H148" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="152" y="16" width="110" height="44" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="207" y="43" font-size="20" text-anchor="middle">Hypothesis</text>
+<path d="M266 38 H296" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="300" y="16" width="100" height="44" rx="8" fill="#cfe0ff" stroke="#1f2a5a"/>
+<text x="350" y="43" font-size="20" text-anchor="middle">New info</text>
+<path d="M404 38 H430" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<text x="478" y="32" font-size="18" text-anchor="middle">keep</text>
+<text x="478" y="54" font-size="18" text-anchor="middle">or drop</text>
+</svg>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">2 · ★ Key idea</span>Intellectually agile<small>the situation keeps changing</small></div><div class="k"><span class="t">🔍 Details</span>emotionally open too</div></div>
+<div class="notes">
+<div class="blk">
+<h2>2. A fluid situation</h2>
+<p>Assumptions show an unchanging, often flawed version of the situation. New facts do not get in.</p>
+<p>Question the ones others accept on faith. You stay emotionally open, and <span class="hl">intellectually agile</span> to a fluid situation.</p>
+<p>Do not commit to assumptions. View them as hypotheses and test them rigorously.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">3 · ★ Key idea</span>Pronouns<small>small self, big role</small></div><div class="k"><span class="t">🔍 Details</span>Pinocchio: the lie grows</div></div>
+<div class="notes">
+<div class="blk">
+<h2>3. Watch we / they and I</h2>
+<p>The less important he makes himself, the more important he probably is. Watts talked up the “others.” He was the ringleader.</p>
+<p>Lots of “I,” “me,” and “my” usually means the real power to decide lies elsewhere.</p>
+<p>Liars use more words and more third-person pronouns, to put distance between themselves and the lie. <span class="hl">The number of words grew along with the lie.</span></p>
+</div>
+</div>
+<div class="cue"><span class="t">4 · ★ Key idea</span>Why listening is hard<small>the mind is already full</small></div>
+<div class="notes">
+<div class="blk">
+<h2>4. Three reasons you miss it</h2>
+<p>Selective listening: a bias for consistency rather than truth. You hear what you want.</p>
+<p>About seven pieces of information at once. Past that, you are overwhelmed.</p>
+<p>A <span class="hl">state of schizophrenia</span>: each person is listening to the voice in their own head. Two people, four voices.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Active listening<small>one focus, both voices quiet</small></div><div class="k"><span class="t">🔍 Details</span>they feel safe</div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. One focus</h2>
+<p>Instead of your argument, make the other person and what they say your <span class="hl">sole and all-encompassing focus</span>.</p>
+<p>That quiets the voice in your head and in theirs. They feel safe, and a real conversation can start.</p>
+<p>The goal of active listening is Discovery. Active listening should be the first step.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">6 · ★ Key idea</span>Wants and needs<small>wants are the door</small></div><div class="k"><span class="t">🔍 Details</span>needs stay hidden</div></div>
+<div class="notes">
+<div class="blk">
+<h2>6. Talk about wants, find the needs</h2>
+<p><span class="hl">Wants</span> are easy to say: the aspiration of getting our way, and an illusion of control.</p>
+<p>Needs imply survival, the minimum that makes us act, so they make us vulnerable.</p>
+<p>Talking about wants is how you discover needs. You do not start with either. You start by listening.</p>
+<svg viewBox="0 0 520 72" role="img" aria-label="Talking about wants leads to needs">
+<rect x="8" y="14" width="180" height="44" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="98" y="34" font-size="20" text-anchor="middle">Wants</text>
+<text x="98" y="52" font-size="16" text-anchor="middle">easy · aspiration</text>
+<path d="M196 36 H250" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<text x="223" y="28" font-size="16" text-anchor="middle">talk</text>
+<rect x="258" y="14" width="200" height="44" rx="8" fill="#ffd9d9" stroke="#b3261e"/>
+<text x="358" y="34" font-size="20" text-anchor="middle">Needs</text>
+<text x="358" y="52" font-size="16" text-anchor="middle">survival · vulnerable</text>
+</svg>
+</div>
+</div>
+<div class="cue"><span class="t">7 · ★ Key idea</span>Slow it down<small>hurry feels like not being heard</small></div>
+<div class="notes">
+<div class="blk">
+<h2>7. Slow. It. Down.</h2>
+<p><span class="hl">Going too fast</span> is a mistake negotiators are prone to. People feel they are not being heard, and trust slips.</p>
+<p>Slow the process down and you calm it down. If someone is talking, they are not shooting.</p>
+<p>This has implications in everyday conversation as well. Going too fast in conversation oftentimes doesn't serve one well.</p>
+</div>
+</div>
+<footer class="sum">
+<p><b>Next:</b> the rest of Chapter 2 — Be a Mirror, from The Voice into mirroring. That stretch reaches Chapter 3 — Don’t Feel Their Pain, Label It. <b>Carry over:</b> mirroring is the tactic this session was for, and it is still ahead. The open piece is how one focus makes the other person feel safe. Keep pairing each tactic with the psychology under it.</p>
+<details open><summary>Summary</summary>
+<p>The most key point I learned is about being aware of assumptions. Instead of making assumptions and defaulting them to fact and acting accordingly, we should put them as hypotheses, rigorously test them against new information that we receive. By doing that, we can be intellectually agile and respond well in a fluid situation. This also means our most important goal at the outset is to observe and collect as much info as we can. And to do that, it requires active listening. Listening is actually hard due to 3 reasons: we often listen selectively due to our cognitive bias for consistency, we get overwhelmed easily only holding about 7 pieces of info at the same time, we have multiple voices in our head that make it hard for us to listen to what's going on. The goal of listening is to identify what our counterpart needs and get them to talk to shed light on those needs. There are differences between needs and wants. Where wants are aspirations, easy to talk about, needs are more survival and run behind the scenes to motivate one's actions. And needs make one more vulnerable. Last point, though not directly related to the content so far, it's about the pace of conversation. Going too fast often erodes trust, makes the other person feel like they are not being heard.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-2 -->
+
+<!-- dear-reader:page-3 -->
+<section class="page" id="session-3" data-label="Session 3 · Oct 21">
+<span class="hole" style="top:16%"></span><span class="hole" style="top:50%"></span><span class="hole" style="top:84%"></span>
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 2 “Be a Mirror”</div><div><b>Session goal:</b> Explain mirroring and why it works, and name one real conversation where I'll try it.</div></div>
+<div class="meta">Session 3 · 45 min · 5558 words<br>Oct 21, 2026</div>
+</header>
+<div class="cue"><div class="k"><span class="t">1 · ★ Key idea</span>The voice<small>delivery flips the switch</small></div><div class="k"><span class="t">🔍 Details</span>warmth comes back as a reflex</div></div>
+<div class="notes">
+<div class="blk">
+<h2>1. How you are</h2>
+<p>People focus on what to say or do. <span class="hl">How we are</span> is easier to enact, and it is the most immediately effective influence.</p>
+<p>On a mostly unconscious level, the other person grasps what you feel. Not by thinking it through.</p>
+<p>“your most powerful tool in any verbal communication is your voice.” It can flip distrust to trust, and nervous to calm.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">2 · ★ Key idea</span>Three tones<small>playful is the default</small></div><div class="k"><span class="t">🔍 Details</span>downward means you've got it covered</div></div>
+<div class="notes">
+<div class="blk">
+<h2>2. Late-night DJ, playful, assertive</h2>
+<p>The late-night FM DJ voice is <span class="hl">the voice of calm and reason</span>. Downward inflection says you are in control. Upward inflection sounds like a question and invites them to lead.</p>
+<ul>
+<li>DJ voice: use it selectively, calm and slow, so you sound trustworthy without triggering defensiveness.</li>
+<li>Positive/playful: the default. Relax and smile while you talk.</li>
+<li>Assertive: rare. It signals dominance, and they push back.</li>
+</ul>
+<p>Late night DJ voice: safe, soft, slow, reassuring. 2 ways of using Late Night DJ voice. Inflecting downward shows you're in control, you've got it covered. Inflecting upward opens a door as you bring in some uncertainty, inviting the other person to take the lead.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">3 · ★ Key idea</span>Mirroring<small>insinuate similarity</small></div><div class="k"><span class="t">? Guiding Q</span>What is mirroring?</div></div>
+<div class="notes">
+<div class="blk">
+<h2>3. Why a mirror works</h2>
+<p>Mirroring, also called isopraxism, is imitation. We copy each other to comfort each other. Speech, body, words, tempo, tone. Usually unconscious, and a sign of rapport.</p>
+<p>Done on purpose, it is <span class="hl">the art of insinuating similarity</span>. “We fear what’s different and are drawn to what’s similar.”</p>
+<p>Mirroring is imitation. It's the art of insinuating similarity.</p>
+<p>What is the biological principle behind mirroring? We fear what's different and are drawn to what's familiar. Birds of a feather flock together. Mirroring talks to the unconscious that "You &amp; me — we are alike."</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">4 · ★ Key idea</span>Last three words<small>then four seconds of quiet</small></div><div class="k"><span class="t">🔍 Details</span>tips rose 70 percent</div></div>
+<div class="notes">
+<div class="blk">
+<h2>4. How to mirror</h2>
+<p>For a negotiator the mirror is words only. <span class="hl">Repeat the last three words</span>, or the critical one to three. Then be quiet for at least four seconds, so the mirror can work.</p>
+<p>They will reword what they said. They will not say it the same way twice. That keeps them talking, buys you time, and shows their strategy.</p>
+<p>Waiters who repeated the order back earned tips 70 percent higher than waiters who praised the order.</p>
+<p><span class="hl">Disagree without being disagreeable:</span> DJ voice, “I’m sorry,” mirror, silence, repeat.</p>
+<svg viewBox="0 0 560 78" role="img" aria-label="Five steps: DJ voice, I'm sorry, mirror, silence, repeat">
+<rect x="4" y="18" width="78" height="40" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="43" y="43" font-size="16" text-anchor="middle">DJ voice</text>
+<path d="M86 38 H100" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="104" y="18" width="86" height="40" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="147" y="43" font-size="16" text-anchor="middle">I'm sorry</text>
+<path d="M194 38 H208" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="212" y="18" width="78" height="40" rx="8" fill="#cfe0ff" stroke="#1f2a5a"/>
+<text x="251" y="43" font-size="16" text-anchor="middle">Mirror</text>
+<path d="M294 38 H308" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="312" y="18" width="100" height="40" rx="8" fill="#ffd9d9" stroke="#b3261e"/>
+<text x="362" y="36" font-size="16" text-anchor="middle">Silence</text>
+<text x="362" y="52" font-size="13" text-anchor="middle">4 seconds</text>
+<path d="M416 38 H430" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="434" y="18" width="78" height="40" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="473" y="43" font-size="16" text-anchor="middle">Repeat</text>
+</svg>
+<p>Things that we can mirror in each other.</p>
+<p>Mirroring is more effective in creating connections than positive reinforcement.</p>
+<p>The keys to deal with Pitbull Type A.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Mirror, don't quiz<small>respect, then clarity</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. The same ask, a different scene</h2>
+<p>The intention behind most mirrors is “Please, help me understand.”</p>
+<p>“What do you mean by that?” is likely to incite irritation. A mirror gets the clarity and signals respect.</p>
+<p>An example of how mirroring works much better in expressing the same idea. Mirroring creates agreeableness / enables collaboration settings before the content is delivered. That's how it can help us be disagreeable in an agreeable way, along with the late-night DJ voice and the use of silence. On the other hand, a question like "What do you mean by that?" though in meaning shows no irritation or defensiveness, is likely to set up the scene that way. The way of delivery sets an environment for the content to come across successfully, in a way that the other is more likely to cooperate.</p>
+</div>
+</div>
+<footer class="sum">
+<p><b>Next:</b> Chapter 3 — Don’t Feel Their Pain, Label It. <b>Carry over:</b> the session goal still needs one real conversation where you will try mirroring. Labeling is the next chapter, so the two principles in the summary get their rules there. Keep the voice, the last three words, and the four seconds of silence with the psychology under each.</p>
+<details open><summary>Summary</summary>
+<p>Mirroring is a technique to insinuate similarity and enable a setting for collaboration — it's backed by the principle "Birds of a feather flock together." We are attracted to what feels familiar. Silence is a technique to pace yourself and ensure the stability of the conversation, create space for the other to talk — it's backed by the fact that when we go too fast, the other may not feel heard and trust is eroded. Labeling is a technique of empathy where the other's feeling is vocalized for recognition. It's backed by 2 psychological principles: (1) when their emotions are named, the other feels acknowledged and that what they feel is validated; (2) by labeling, it quiets the emotions and enables collaboration.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-3 -->
+
+<!-- dear-reader:page-4 -->
+<section class="page" id="session-4" data-label="Session 4 · Oct 26">
+<span class="hole" style="top:16%"></span><span class="hole" style="top:50%"></span><span class="hole" style="top:84%"></span>
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 3 “Don’t Feel Their Pain, Label It”</div><div><b>Session goal:</b> Explain labeling and why it works, and name one real conversation where I'll try it.</div></div>
+<div class="meta">Session 4 · 71.3 min · 2498 words<br>Oct 26, 2026</div>
+</header>
+<div class="cue"><div class="k"><span class="t">1 · ★ Key idea</span>Emotion as a tool<small>not an obstacle</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>1. From obstacle to means</h2>
+<p>Old advice: poker face, don’t get emotional. Once people get upset, <span class="hl">rational thinking goes out the window</span>.</p>
+<p>Good negotiators identify and influence emotions, their own first. For them, <span class="hl">emotion is a tool</span>.</p>
+<p>In this part, the author reframed emotions from obstacle to tool. He first explained how emotions derail communication by disabling one from making sensible decisions. And by precisely labeling emotions of oneself and the other, that can release the person from the control of that specific emotion. Precision is important to take away emotion's power.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">2 · ★ Key idea</span>Get ready<small>talk less, watch more</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>2. Before you empathize</h2>
+<p>Getting to this level demands <span class="hl">opening up your senses, talking less, and listening more</span>.</p>
+<p>Watch and listen. Eyes peeled, ears open, mouth shut.</p>
+<p>A bit more information on how to get yourself ready to empathize with someone.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">3 · ★ Key idea</span>Tactical empathy<small>feelings, and what’s behind them</small></div><div class="k"><span class="t">? Guiding Q</span>how can an interviewee use this when they have to talk a lot?</div></div>
+<div class="notes">
+<div class="blk">
+<h2>3. Hear what is behind the feeling</h2>
+<p><span class="hl">Tactical empathy</span> is understanding feelings and mindset in the moment, and hearing what is <i>behind</i> those feelings, so you gain influence in the moments that follow.</p>
+<p>You can hold their point of view <u>while</u> you talk. The interviewer’s question is the feeling to hear behind; label that, then answer.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">4 · ★ Key idea</span>Neural resonance<small>your brain lines up with theirs</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>4. Practice the alignment</h2>
+<p>Watch face, gestures, and tone. The brain begins to align. That is neural resonance.</p>
+<p>Everyday drill: listen to someone near you, or a person on TV, and imagine you are them, in as much detail as you can.</p>
+<p>This is a useful exercise idea that I can practice every day.</p>
+<span class="app"><b>→ Practice:</b> one everyday listen-and-imagine, as if you were the speaker.</span>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Labeling<small>spot, name, repeat back</small></div><div class="k"><span class="t">🔍 Details</span>disrupts raw intensity</div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. How labeling is done</h2>
+<p>Not only step into their shoes. <span class="hl">Spot the feelings, turn them into words, then calmly and respectfully repeat them back.</span></p>
+<p>Naming a fear applies rational words to it and <span class="hl">disrupts its raw intensity</span>.</p>
+<p>How empathy is done step by step. And to do it, it requires one to step into the other's shoes.</p>
+<svg viewBox="0 0 560 78" role="img" aria-label="Spot the feeling, turn it into words, repeat it back, then silence">
+<rect x="4" y="18" width="78" height="40" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="43" y="43" font-size="16" text-anchor="middle">Spot</text>
+<path d="M86 38 H100" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="104" y="18" width="86" height="40" rx="8" fill="#ffe76a" stroke="#1f2a5a"/>
+<text x="147" y="43" font-size="16" text-anchor="middle">Name it</text>
+<path d="M194 38 H208" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="212" y="18" width="100" height="40" rx="8" fill="#cfe0ff" stroke="#1f2a5a"/>
+<text x="262" y="43" font-size="16" text-anchor="middle">Repeat back</text>
+<path d="M316 38 H330" stroke="#1f2a5a" stroke-width="2" fill="none"/>
+<rect x="334" y="18" width="100" height="40" rx="8" fill="#ffd9d9" stroke="#b3261e"/>
+<text x="384" y="43" font-size="16" text-anchor="middle">Silence</text>
+</svg>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">6 · ★ Key idea</span>Silence after the label<small>don’t expand</small></div><div class="k"><span class="t">🔍 Details</span>It seems / sounds / looks like</div></div>
+<div class="notes">
+<div class="blk">
+<h2>6. The last rule is quiet</h2>
+<p>Say <span class="hl">It seems like, It sounds like, It looks like</span>. Do not start with “I.”</p>
+<p><span class="hl">Once you’ve thrown out a label, be quiet and listen.</span> Expanding with a question kills the reveal.</p>
+<p>Important rule: after labeling / mirroring, be silent. DON'T expand on what we've said. We must leave it to let the person reveal themselves.</p>
+<span class="app"><b>→ Try:</b> one real conversation. Label one emotion. Then go silent.</span>
+</div>
+</div>
+<footer class="sum">
+<p><b>Next:</b> the rest of Chapter 3 — Don’t Feel Their Pain, Label It, from Neutralize the Negative, Reinforce the Positive. <b>Carry over:</b> the session goal still needs one real conversation where you will try labeling. In an interview, the open piece is labeling what is behind the question before you talk.</p>
+<details open><summary>Summary (refined)</summary>
+<p>Labeling is spotting the feelings of the other, naming them, and letting them expand. Labeling is to name the feeling of the other person to decrease the raw emotion intensity and let them reveal themselves: labeling an emotion applies rational words to a fear and disrupts its raw intensity. To label the other's emotions precisely, we must try to put ourselves in their shoes, mouth shut, eyes peeled, ears open. Tactical empathy is understanding their feelings and mindset in the moment and hearing what is behind those feelings so you increase your influence in the moments that follow. Labeling is how you say that recognition out loud, not the whole of tactical empathy. You can hold their point of view while you are talking. Traditional advice treats emotion as an obstacle; once people get upset, rational thinking goes out the window. Good negotiators identify and influence emotions. Emotion is a tool. Say it as It seems like, It sounds like, or It looks like, not I. After the label, be silent. Closely observe face, gestures, and tone so your brain aligns with theirs.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-4 -->
+
+<!-- dear-reader:page-5 -->
+<section class="page" id="session-5" data-label="Session 5 · Oct 27">
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 3 “Don’t Feel Their Pain, Label It”</div><div><b>Session goal:</b> Explain labeling and why it works, and name one real conversation where I'll try it.</div></div>
+<div class="meta">Session 5 · 45.8 min · 5152 words<br>Oct 27, 2026</div>
+</header>
+<div class="cue"><div class="k"><span class="t">1 · ★ Key idea</span>Underlying, not presenting<small>negatives diffuse, positives reinforce</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>1. What a label is for</h2>
+<p>Emotions have two levels: the <span class="hl">presenting behavior</span> you can see, and the <span class="hl">underlying feeling</span> that motivates it.</p>
+<p>Label the underlying one. Negatives diffuse. Positives reinforce.</p>
+<p>Labeling is not about the surface presenting part, but about labeling the underlying feeling. That's why it's essential to put yourself in the other's shoes to feel what they are feeling.</p>
+<p>Labeling is not just for diffusing negative feelings but also to reinforce positive ones.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">2 · ★ Key idea</span>Go at the negative<small>fearless, deferential</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>2. Do not sugar-coat</h2>
+<p>Go directly at negative dynamics. If it is your mistake, acknowledge their anger. “Look, I’m an asshole” is Voss’s version.</p>
+<p>“I don’t want this to sound harsh …” <span class="hl">denies the negative and gives it credence</span>.</p>
+<p>The more negative the emotions towards you, the more urgent it is to go direct and label it. If it's your mistake, acknowledge their anger by using yourself: "Look I'm an asshole" "Bless me father, I have sins."</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">3 · ★ Key idea</span>Observe first<small>no reaction, no judgment</small></div><div class="k"><span class="t">? Guiding Q</span>their negativity, or yours first?</div></div>
+<div class="notes">
+<div class="blk">
+<h2>3. Observe, then label, then replace</h2>
+<p>Deal with negativity by observing it <span class="hl">without reaction and without judgment</span>. Then label. Then replace with compassionate, solution-based thoughts.</p>
+<p>Stressing on observe, WITHOUT reaction / judgment. Then label and replace.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">4 · ★ Key idea</span>Presenting vs underlying<small>jail, not “let you go”</small></div><div class="k"><span class="t">? Guiding Q</span>how are the two Harlem labels different?</div></div>
+<div class="notes">
+<div class="blk">
+<h2>4. Name the fear that drives it</h2>
+<p>“Let you go” is the presenting want. Everyone already knows it. <span class="hl">“You don’t want to go back to jail”</span> is the underlying fear.</p>
+<p>Same split: cranky grandfather / lonely. Donor’s money fear / Girl Scout memories. The second label got “You understand me” and “I trust.”</p>
+<p>Not just label the sadness; they describe the situation / acknowledge what's been going on. This seems to help set the same context for both, let the other see that you also see what they see.</p>
+<svg viewBox="0 0 560 78" role="img" aria-label="Presenting want versus underlying fear">
+<rect x="8" y="14" width="220" height="50" rx="8" fill="#cfe0ff" stroke="#1f2a5a"/>
+<text x="118" y="36" font-size="18" text-anchor="middle">Presenting</text>
+<text x="118" y="54" font-size="15" text-anchor="middle">let us go</text>
+<rect x="300" y="14" width="240" height="50" rx="8" fill="#ffd9d9" stroke="#b3261e"/>
+<text x="420" y="36" font-size="18" text-anchor="middle">Underlying</text>
+<text x="420" y="54" font-size="15" text-anchor="middle">don’t want to go back to jail</text>
+</svg>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Accusation audit<small>say the worst first</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. List every terrible thing they could say</h2>
+<p>Write every charge they could make about you. Say those first. Said aloud they often <span class="hl">sound exaggerated</span>, so the other person talks you down.</p>
+<p>This is similar to the labeling when you made a mistake. Accusation audit to acknowledge the other's feeling. This is different from our tendency to sugar-coat the talk… We must do the opposite: ADMIT the accusation and it DIFFUSES.</p>
+<span class="app"><b>→ Try:</b> one real conversation. List the worst they could say. Say it first.</span>
+</div>
+</div>
+<footer class="sum">
+<p><b>Next:</b> Chapter 4 — Beware “Yes”—Master “No”. <b>Carry over:</b> the session goal still needs one real conversation for labeling, or for an accusation audit. Keep pairing the tactic with the psychology: underlying feeling, not the surface.</p>
+<details open><summary>Summary (refined)</summary>
+<p>There are 2 layers of emotions: presenting behavior and underlying emotions that motivate it. Presenting feelings are what is shown to others, underlying feelings are what motivate the presenting, and they are what we need to label. “Let you go” is presenting; “you don’t want to go back to jail” is the underlying fear. Labeling is to acknowledge the emotions underneath. Labeling negative feelings diffuses them and labeling positive feelings reinforces them. Once the primary emotion is acknowledged, the shift can be sudden: “You understand me.” “I trust you’ll find the right project.” Labeling fears interrupts the amygdala and generates safety, well-being, and trust. Accusation audit works by acknowledging all the negative feelings the other has towards you to diffuse them and get the other to feel understood, which enables effective conversation afterwards. Avoid saying something like I don't want to be rude… This is denying, and it backfires / reinforces the negative. Admitting the accusations will do the opposite. The sequence of effective labeling: observe without reaction / judgment, label, silence, replace the negative with positive, compassionate, and solution-based thoughts. Know that though these are powerful tools, it takes time to get people to the right state of mind.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-5 -->
+
+<!-- dear-reader:page-6 -->
+<section class="page" id="session-6" data-label="Session 6 · Oct 28">
+<span class="hole" style="top:16%"></span><span class="hole" style="top:50%"></span><span class="hole" style="top:84%"></span>
+<header>
+<div><h1>Never Split the Difference — Chris Voss</h1><div>Ch. 4 “Beware “Yes”—Master “No””</div><div><b>Session goal:</b> Explain why “No” starts the negotiation, and name one real conversation where I'll try it.</div></div>
+<div class="meta">Session 6 · 90 min · 6476 words<br>Oct 28, 2026</div>
+</header>
+<div class="cue"><div class="k"><span class="t">1 · ★ Key idea</span>No starts it<small>not the end, a pause</small></div><div class="k"><span class="t">🔍 Details</span>status quo, then they can listen</div></div>
+<div class="notes">
+<div class="blk">
+<h2>1. “No” is the start</h2>
+<p><span class="hl">“No” is the start of the negotiation, not the end of it.</span> It is often a temporary decision to keep the status quo. Change is scary, and “No” buys a little safety.</p>
+<p>Once they have protected themselves, they can relax and hear you. Amy’s “No’s” were the gateway to the one “Yes” that mattered.</p>
+<p>Think of experiment. Each failure helps you understand the subject matter better and adjust to get to the goal. This is how NO helps while YES is a dead end.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">2 · ★ Key idea</span>Safe and in control<small>two primal urges</small></div><div class="k"><span class="t">🔍 Details</span>retrain how you hear No</div></div>
+<div class="notes">
+<div class="blk">
+<h2>2. Autonomy first</h2>
+<p>Everyone is driven by two primal urges: the need to feel <span class="hl">safe and secure</span>, and the need to feel <span class="hl">in control</span>.</p>
+<p>Give them permission to say “No.” The emotions calm. They can actually look at the proposal.</p>
+<p>To work with NO well, we need to retrain ourselves in hearing NO and interpret it as something more specific, rather than default it to rejection.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">3 · ★ Key idea</span>Three yeses<small>they sound the same</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>3. Counterfeit, confirmation, commitment</h2>
+<p>A <span class="hl">counterfeit “yes”</span> hides a no, or buys time. A confirmation “yes” is a reflex with no promise of action. A <span class="hl">commitment “yes”</span> leads to action.</p>
+<p>The Yes-pattern scripts got yes after yes, then a final no. Yes may not mean positivity or agreement; it can be a counterfeit that hides real motives, for example avoidance.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">4 · ★ Key idea</span>Invite a No<small>they feel in the driver’s seat</small></div><div class="k"><span class="t">🔍 Details</span>Is now a bad time?</div></div>
+<div class="notes">
+<div class="blk">
+<h2>4. Ask so the answer is No</h2>
+<p>Good negotiators welcome a solid “No” to start. It means they are engaged and thinking.</p>
+<p>Don’t start with “Do you have a few minutes to talk?” Ask, <span class="hl">“Is now a bad time to talk?”</span></p>
+<p>Marti: “Do you want the FBI to be embarrassed?” then “What do you want me to do?” A strongly worded No, then a calibrated question, gives them the illusion of control while they solve the problem for you.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">5 · ★ Key idea</span>Force a No<small>if they are not listening</small></div><div class="k"><span class="t">🔍 Details</span>mislabel, or ask what they don’t want</div></div>
+<div class="notes">
+<div class="blk">
+<h2>5. Two ways to get the word out</h2>
+<p>Feeling they <i>can</i> say No is not the same as getting them to say it. If they are not listening, antagonize them into No.</p>
+<ul>
+<li><span class="hl">Mislabel</span> an emotion or desire you know is wrong, so they correct you.</li>
+<li>Make the topic what they <span class="hl">don’t want</span>, so they can freely say No.</li>
+</ul>
+<p>It's not always easy to get people to say NO. One way is to mislabel their feelings on purpose, making it sound dramatic and exaggerated.</p>
+</div>
+</div>
+<div class="cue"><div class="k"><span class="t">6 · ★ Key idea</span>Anti-niceness<small>authentic, not plastic</small></div></div>
+<div class="notes">
+<div class="blk">
+<h2>6. Negotiate in their world</h2>
+<p>These tools go against “Be nice.” <span class="hl">Plastic niceness</span> blocks real connection. Triggering No is the anti-niceness ruse: not unkind, authentic.</p>
+<p>A good negotiator’s power is less about him and more about what he can get from the counterpart: their situation, needs, and desires.</p>
+<p><span class="hl">Persuasion is not about how bright or smooth or forceful you are.</span> It’s the other party convincing themselves. Ask questions that open paths to your goals. It’s not about you.</p>
+<p>Interestingly, when you say NO, you are more likely to be authentic with your feelings than YES. → ANTI-NICENESS</p>
+</div>
+</div>
+<footer class="sum">
+<p><b>Next:</b> Chapter 5 — Trigger the Two Words That Immediately Transform Any Negotiation. <b>Carry over:</b> the session goal still needs one real conversation where you will invite a No, or try “Is now a bad time?” Keep pairing the tactic with the psychology: safe and in control, not rejection.</p>
+<details open><summary>Summary (refined)</summary>
+<p>The chapter focuses on discussing the misunderstanding around YES and NO. He pivots to the idea that NO is the way to influence while YES can be just another dead end. NO is the start of the negotiation, not the end. It is often a temporary decision to keep the status quo. There are 3 kinds of YES: counterfeit, confirmation, commitment. What we aim for is commitment, where people take action. How NO helps: it creates safety and puts people in control. This dismisses their fear, reinforces that their basic needs are covered, and makes way for them to make decisions and collaborate. How to get people to say NO: (1) mislabel their emotions / motives on purpose (2) set the topic about what they don't want so they are free to say NO. Another way to open is to invite a NO: don't start with "Do you have a few minutes to talk?" Ask, "Is now a bad time to talk?" Another point about YES and NO: our natural tendency to say YES is to play nice. This is a surface-level understanding of YES and NO. What we need to change in our mindset is to see the real meaning and hidden motives behind YES and NO, instead of seeing them simply as agreement / alignment and disagreement / objection. A good negotiator does not put on a performance. They guide the counterpart to discover their goal as his own. Persuasion is not about how bright or forceful you are. It's the other party convincing themselves that the solution you want is their own idea.</p>
+</details>
+</footer>
+</section>
+<!-- /dear-reader:page-6 -->
+<!-- dear-reader:pages-end -->
+</body>
+</html>
