@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/*
+  ReadOnn tokens — d.school-inspired, applied for reading UX (not a copy).
+  Pattern from Bootleg / homepage: cream paper ground, near-black ink,
+  vermillion ONLY for primary CTAs. Reading chrome stays quiet.
+  Style cue: e-ink / notes app calm (ui-ux-pro-max).
+*/
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Source Serif 4", ui-serif, Georgia, "Times New Roman", serif;
+
+  --color-background: #fdfbf7;
+  --color-foreground: #1a1a1a;
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a1a;
+  /* CTA / signal only — Bootleg red */
+  --color-primary: #eb2a23;
+  --color-primary-foreground: #fdfbf7;
+  --color-secondary: #f3f0e8;
+  --color-secondary-foreground: #1a1a1a;
+  --color-muted: #f3f1ea;
+  --color-muted-foreground: #5c5748;
+  /* Quiet surface tint — never a neon fill in chrome */
+  --color-accent: #f3f0e8;
+  --color-accent-foreground: #1a1a1a;
+  --color-destructive: #eb2a23;
+  --color-destructive-foreground: #fdfbf7;
+  --color-border: #e4e0d4;
+  --color-input: #e4e0d4;
+  --color-ring: #1a1a1a;
+  /* In-text highlight only */
+  --color-highlight: #f3e4a0;
+  --color-paper: #f8f3db;
+  --color-desk: #c9a26b;
+  --color-line: #b9cde0;
+  --color-margin: #e08a8a;
+  --color-ink: #1a1a1a;
+  --color-hero: #e8f6f7;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Outside @theme so Tailwind cannot tree-shake it */
+:root {
+  --color-stanford: #279989;
+}
+
+/* Default border color only for elements that set a border width —
+   do NOT use * { border-color } — it overrides Tailwind utilities. */
+
+html,
+body,
+#root {
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-highlight) 70%, transparent);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* Exact selection highlight in the book */
+.highlight-mark {
+  color: inherit;
+  background-color: var(--color-highlight);
+  border-radius: 0.15rem;
+  padding: 0.05em 0.08em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* HL panel card fill */
+.highlight-card {
+  background-color: var(--color-highlight);
+}
+
+.para-focus {
+  outline: 2px solid #279989;
+  outline-offset: 6px;
+  border-radius: 0.25rem;
+  transition: outline-color 0.25s ease;
+}
+
+/* Exact comment span in the book — Stanford green wash + underline */
+.comment-mark {
+  color: inherit;
+  background: color-mix(in srgb, #279989 16%, transparent);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  border-bottom: 3px solid #279989;
+  padding: 0 1px;
+}
+
+.comment-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-left: 0.25rem;
+  vertical-align: middle;
+  border-radius: 9999px;
+  background: #279989;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.comment-badge:hover,
+.comment-badge.is-active {
+  background: #1b7a6d;
+  outline: 2px solid color-mix(in srgb, #279989 40%, white);
+  outline-offset: 2px;
+}
+
+.comment-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background: #d8efe9;
+  color: #1b7a6d;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.comment-quote-box {
+  border-radius: 0.5rem;
+  background: #f3f1ea;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  color: #3a3a3a;
+  line-height: 1.45;
+}
+
+.cornell-page {
+  background-color: var(--color-paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--color-line) 27px,
+    var(--color-line) 28px
+  );
+}
+
+/* Bootleg-style CTA: bold label + vermillion mark (primary actions) */
+.cta-bootleg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+  color: var(--color-foreground);
+  cursor: pointer;
+}
+
+.cta-bootleg__mark {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+}
+
+.cta-bootleg--sm {
+  gap: 0.5rem;
+}
+
+.cta-bootleg--sm .cta-bootleg__mark {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+/* Slogan keyword highlight — Arena-style yellow mark */
+.slogan-muted {
+  color: color-mix(in srgb, var(--color-foreground) 48%, transparent);
+}
+
+.slogan-highlight {
+  color: var(--color-foreground);
+  font-style: italic;
+  background: #ffe566;
+  padding: 0.02em 0.18em 0.06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Prototype cue: only the lead book gets a strong outline */
+.book-card-featured {
+  border: 2px solid #279989 !important;
+  box-shadow: 0 2px 12px color-mix(in srgb, #279989 22%, transparent);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.book-card-featured:hover {
+  border-color: #1b7a6d !important;
+  box-shadow: 0 4px 16px color-mix(in srgb, #279989 30%, transparent);
+}
